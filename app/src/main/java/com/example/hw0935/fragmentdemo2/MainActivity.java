@@ -1,6 +1,7 @@
 package com.example.hw0935.fragmentdemo2;
 
 import android.content.Intent;
+import android.os.Build;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
@@ -13,6 +14,7 @@ public class MainActivity extends AppCompatActivity {
 
     private Button b;
     private Button b2;
+    private Button b3;
 
     private void addFrag2() {
 
@@ -35,6 +37,7 @@ public class MainActivity extends AppCompatActivity {
 
         b = findViewById(R.id.addFrag);
         b2 = findViewById(R.id.addActivity);
+        b3 = findViewById(R.id.startPip);
 
 
         b.setOnClickListener(new View.OnClickListener() {
@@ -53,6 +56,15 @@ public class MainActivity extends AppCompatActivity {
                 Intent i = new Intent(MainActivity.this, MainActivity2.class);
 
                 startActivity(i);
+            }
+        });
+
+        b3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                    MainActivity.this.enterPictureInPictureMode();
+                }
             }
         });
 
