@@ -34,7 +34,6 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-
         b = findViewById(R.id.addFrag);
         b2 = findViewById(R.id.addActivity);
         b3 = findViewById(R.id.startPip);
@@ -68,14 +67,16 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        FragmentManager fm = getSupportFragmentManager();
+        if(savedInstanceState == null) {
+            FragmentManager fm = getSupportFragmentManager();
 
 
-        FragmentTransaction ft = fm.beginTransaction();
+            FragmentTransaction ft = fm.beginTransaction();
 
-        ft.add(R.id.fragment, new MyFragment());
-        //ft.addToBackStack(null);
-        ft.commit();
+            ft.add(R.id.fragment, new MyFragment());
+            //ft.addToBackStack(null);
+            ft.commit();
+        }
     }
 
 
